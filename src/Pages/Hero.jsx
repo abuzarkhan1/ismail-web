@@ -11,7 +11,11 @@ import {
   Target,
   Sparkles,
   Crown,
-  Flame
+  Flame,
+  Users,
+  Code,
+  Star,
+  Award
 } from 'lucide-react';
 
 // Floating Icons Component
@@ -19,11 +23,11 @@ const FloatingIcons = () => {
   const [icons, setIcons] = useState([]);
   
   const iconComponents = [
-    { component: Gamepad, color: 'text-purple-400'  },
-    { component: Sword, color: 'text-red-400'  },
+    { component: Gamepad, color: 'text-purple-400' },
+    { component: Sword, color: 'text-red-400' },
     { component: Shield, color: 'text-blue-400' },
-    { component: Crosshair, color: 'text-green-400' },
-    { component: Skull, color: 'text-gray-400' },
+    { component: Code, color: 'text-green-400' },
+    { component: Star, color: 'text-yellow-400' },
     { component: Heart, color: 'text-pink-400' },
     { component: Zap, color: 'text-yellow-400' },
     { component: Trophy, color: 'text-amber-400' },
@@ -33,21 +37,46 @@ const FloatingIcons = () => {
     { component: Flame, color: 'text-rose-400' }
   ];
 
+  const directions = ['bottom', 'top', 'left', 'right'];
+
   const createIcon = () => {
     const randomIcon = iconComponents[Math.floor(Math.random() * iconComponents.length)];
-    const startX = Math.random() * 100;
+    const direction = directions[Math.floor(Math.random() * directions.length)];
     const duration = 7000 + Math.random() * 5000;
-    const size = 16 + Math.floor(Math.random() * 16);
+    const size = 24 + Math.floor(Math.random() * 24);
+
+    let startPosition;
+    let animationName;
+
+    switch (direction) {
+      case 'bottom':
+        startPosition = { left: `${Math.random() * 100}%`, top: '100%' };
+        animationName = 'floatFromBottom';
+        break;
+      case 'top':
+        startPosition = { left: `${Math.random() * 100}%`, top: '-100px' };
+        animationName = 'floatFromTop';
+        break;
+      case 'left':
+        startPosition = { left: '-100px', top: `${Math.random() * 100}%` };
+        animationName = 'floatFromLeft';
+        break;
+      case 'right':
+        startPosition = { left: '100%', top: `${Math.random() * 100}%` };
+        animationName = 'floatFromRight';
+        break;
+    }
 
     const newIcon = {
       id: Date.now(),
       Icon: randomIcon.component,
       color: randomIcon.color,
       style: {
-        left: `${startX}%`,
+        ...startPosition,
         animationDuration: `${duration}ms`,
         width: `${size}px`,
-        height: `${size}px`
+        height: `${size}px`,
+        animationName
       }
     };
 
@@ -68,7 +97,7 @@ const FloatingIcons = () => {
       {icons.map(({ id, Icon, color, style }) => (
         <div
           key={id}
-          className={`absolute animate-float opacity-30 ${color}`}
+          className={`absolute ${color} opacity-30`}
           style={style}
         >
           <Icon />
@@ -76,24 +105,56 @@ const FloatingIcons = () => {
       ))}
       
       <style jsx>{`
-        @keyframes float {
+        @keyframes floatFromBottom {
           0% {
-            transform: translateY(100vh) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
             opacity: 0;
           }
-          10% {
-            opacity: 0.3;
-          }
-          90% {
-            opacity: 0.3;
-          }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
           100% {
-            transform: translateY(-100px) rotate(360deg);
+            transform: translateY(-120vh) rotate(360deg);
             opacity: 0;
           }
         }
-        .animate-float {
-          animation: float linear forwards;
+        
+        @keyframes floatFromTop {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+          }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
+          100% {
+            transform: translateY(120vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes floatFromLeft {
+          0% {
+            transform: translateX(0) rotate(0deg);
+            opacity: 0;
+          }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
+          100% {
+            transform: translateX(120vw) rotate(360deg);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes floatFromRight {
+          0% {
+            transform: translateX(0) rotate(0deg);
+            opacity: 0;
+          }
+          10% { opacity: 0.3; }
+          90% { opacity: 0.3; }
+          100% {
+            transform: translateX(-120vw) rotate(360deg);
+            opacity: 0;
+          }
         }
       `}</style>
     </div>
@@ -132,25 +193,32 @@ const HeroSection = ({ setActiveSection }) => {
         }
         currentIndex++;
       } else {
-        setIsTypingComplete(true);
-        setShowCursor(false);
+        setTimeout(() => {
+          currentIndex = 0;
+          setDisplayText('');
+        }, 1000);
       }
     };
 
-    const typingInterval = setInterval(typeNextCharacter, typingDelay);
+    const startTypingLoop = () => {
+      const typingInterval = setInterval(typeNextCharacter, typingDelay);
+      
+      setTimeout(() => {
+        clearInterval(typingInterval);
+        setTimeout(startTypingLoop, 3000);
+      }, (fullName.length * typingDelay) + 1000);
+    };
 
-    return () => clearInterval(typingInterval);
+    startTypingLoop();
   }, []);
 
   useEffect(() => {
-    if (isTypingComplete) return;
-
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 530);
 
     return () => clearInterval(cursorInterval);
-  }, [isTypingComplete]);
+  }, []);
 
   return (
     <section className="relative min-h-screen bg-[#0A0B0E] flex items-center justify-center px-4">
@@ -190,16 +258,16 @@ const HeroSection = ({ setActiveSection }) => {
 
       <div className="relative w-full max-w-5xl">
         <div className="absolute -top-4 -left-4">
-          <Gamepad className="w-8 h-8 text-blue-400" />
+          <Gamepad className="w-12 h-12 text-blue-400" />
         </div>
         <div className="absolute -top-4 -right-4">
-          <Sword className="w-8 h-8 text-blue-400" />
+          <Code className="w-12 h-12 text-blue-400" />
         </div>
         <div className="absolute -bottom-4 -left-4">
-          <Shield className="w-8 h-8 text-blue-400" />
+          <Crown className="w-12 h-12 text-blue-400" />
         </div>
         <div className="absolute -bottom-4 -right-4">
-          <Target className="w-8 h-8 text-blue-400" />
+          <Target className="w-12 h-12 text-blue-400" />
         </div>
 
         <div className="relative rounded-xl overflow-hidden">
@@ -208,26 +276,26 @@ const HeroSection = ({ setActiveSection }) => {
           <div className="relative px-8 py-16">
             <div className="text-center mb-16">
               <div className="text-blue-400 text-xl font-mono mb-6 flex items-center justify-center gap-2">
-                ✦ // WELCOME TO THE GAME // ✦
+                ✦ // GAME DEVELOPMENT MAESTRO // ✦
               </div>
               <h1 className="text-6xl font-bold text-blue-400 font-mono mb-4 flex items-center justify-center">
                 <span>{displayText}</span>
                 <span className={`ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>|</span>
               </h1>
               <div className="text-blue-500 text-xl font-mono">
-                [MASTER OF DIGITAL REALMS]
+                [CRAFTING DIGITAL ADVENTURES]
               </div>
               <div className="text-blue-400/80 mt-8 font-mono">
-                QUEST OBJECTIVE: CREATING LEGENDARY GAMING EXPERIENCES
+                MISSION: CREATING IMMERSIVE GAMING EXPERIENCES
               </div>
             </div>
 
             <div className="grid grid-cols-4 gap-8">
               {[
-                { icon: <Crosshair className="w-6 h-6" />, value: '100%', label: 'ACCURACY' },
-                { icon: <Skull className="w-6 h-6" />, value: '∞', label: 'BOSSES DEFEATED' },
-                { icon: <Zap className="w-6 h-6" />, value: 'MAX', label: 'POWER LEVEL' },
-                { icon: <Trophy className="w-6 h-6" />, value: 'ALL', label: 'ACHIEVEMENTS' },
+                { icon: <Code className="w-8 h-8" />, value: '50+', label: 'GAMES DEVELOPED' },
+                { icon: <Users className="w-8 h-8" />, value: '1M+', label: 'HAPPY PLAYERS' },
+                { icon: <Star className="w-8 h-8" />, value: '4.9', label: 'AVG RATING' },
+                { icon: <Award className="w-8 h-8" />, value: '15+', label: 'GAME AWARDS' },
               ].map((stat, index) => (
                 <div
                   key={index}
