@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
   Code2,
   Cpu,
@@ -13,7 +13,6 @@ import {
   Bot,
   Users,
   Lock,
-  Unlock,
 } from 'lucide-react';
 
 const SkillMatrix = () => {
