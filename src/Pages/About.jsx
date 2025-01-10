@@ -87,7 +87,7 @@ const AboutSection = () => {
             <div className="relative aspect-square">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-300/20 rounded-xl" />
               <img 
-                src="/public/1.jpg" 
+                src="https://res.cloudinary.com/diwerulix/image/upload/v1736514528/1_mkkdve.jpg" 
                 alt="Profile" 
                 className="rounded-xl w-full relative z-10 mix-blend-overlay opacity-90"
               />

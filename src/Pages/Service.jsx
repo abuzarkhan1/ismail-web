@@ -211,7 +211,7 @@ const PortfolioSection = () => {
   const games = [
     {
       title: "CYBER NEXUS",
-      image: "/public/2.jpg",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
       description: "A groundbreaking cyberpunk action RPG that pushes the boundaries of character customization and combat mechanics. Dive into a neon-drenched world where every choice matters and your cybernetic augmentations define your gameplay style.",
       genre: "Action RPG",
       platforms: "PC / PS5",
@@ -229,7 +229,7 @@ const PortfolioSection = () => {
     },
     {
       title: "QUANTUM DRIFT",
-      image: "/public/2.jpg",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
       description: "Experience racing like never before in this quantum mechanics-inspired racing game. Manipulate time and space as you drift through impossible tracks at breakneck speeds.",
       genre: "Racing",
       platforms: "PC / Xbox",
@@ -247,7 +247,7 @@ const PortfolioSection = () => {
     },
     {
       title: "STELLAR SIEGE",
-      image: "/public/2.jpg",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
       description: "Command massive fleets in epic space battles. Build your empire across the stars in this strategic masterpiece that combines resource management with tactical combat.",
       genre: "Strategy",
       platforms: "All",
