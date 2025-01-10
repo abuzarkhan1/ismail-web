@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gamepad, Target } from 'lucide-react';
+import { Gamepad, Target, Heart, Code, Coffee } from 'lucide-react';
 
 const Navbar = ({ activeSection, setActiveSection }) => {
   const NavButton = ({ section, children }) => (
@@ -9,7 +9,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         relative px-6 py-2 font-mono uppercase tracking-wider text-sm
         transition-all duration-300 group overflow-hidden
         ${activeSection === section
-          ? 'text-blue-400 bg-[#1a1b2e] shadow-lg shadow-blue-500/20'
+          ? 'text-blue-400 bg-[#0A0B0E] shadow-lg shadow-blue-500/20'
           : 'text-blue-400/70 hover:text-blue-400'
         }
       `}
@@ -19,7 +19,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         absolute inset-0 opacity-0 group-hover:opacity-100
         transition-opacity duration-300
         ${activeSection === section ? 'opacity-100' : ''}
-        bg-gradient-to-r from-[#1a1b2e] to-[#141428]
+        bg-[#0A0B0E]/80 backdrop-blur-sm
       `} />
       
       {/* Button content */}
@@ -28,8 +28,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       {/* Active indicator */}
       {activeSection === section && (
         <>
-          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400/30" />
-          <div className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-blue-400 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-full h-2 bg-blue-900/30 rounded-full overflow-hidden">
+            <div className="h-full w-full bg-blue-400/50 animate-pulse rounded-full" />
+          </div>
         </>
       )}
     </button>
@@ -45,8 +46,8 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Gamepad className="w-6 h-6 text-blue-400" />
-            <span className="text-xl font-bold font-mono text-blue-400">
+            <Code className="w-5 h-5 text-blue-400" />
+            <span className="text-xl font-mono text-blue-400/70">
               ISMAIL AZAM
             </span>
           </div>
@@ -56,14 +57,20 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             <NavButton section="hero">Home</NavButton>
             <NavButton section="about">About</NavButton>
             <NavButton section="skills">Skills</NavButton>
-            <NavButton section="services">Services</NavButton>
+            <NavButton section="services">Projects</NavButton>
             <NavButton section="contact">Contact</NavButton>
           </div>
 
           {/* Stats indicator */}
           <div className="flex items-center gap-2">
-            <Target className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-400 font-mono text-sm">LEVEL 99</span>
+            <div className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-blue-400 animate-pulse" />
+              <Coffee className="w-4 h-4 text-blue-400" />
+            </div>
+            <div className="h-2 w-20 bg-blue-900/30 rounded-full overflow-hidden">
+              <div className="h-full w-full bg-blue-400/50 animate-pulse rounded-full" />
+            </div>
+            <span className="text-blue-400/70 font-mono text-xs">ONLINE</span>
           </div>
         </div>
       </div>

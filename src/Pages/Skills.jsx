@@ -107,15 +107,7 @@ const SkillMatrix = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_50%,rgba(29,78,216,0.15),transparent)]" />
       </div>
 
-      {/* Loading Screen */}
-      {isLoading && (
-        <div className="fixed inset-0 bg-[#0A0B0E] z-50 flex items-center justify-center">
-          <div className="text-blue-400 font-mono text-2xl flex items-center gap-3">
-            <Lock className="w-8 h-8 animate-pulse" />
-            INITIALIZING SKILL MATRIX...
-          </div>
-        </div>
-      )}
+    
 
       {/* Main Content */}
       <div className="relative min-h-screen pt-24 px-6 pb-12 container mx-auto max-w-6xl">
