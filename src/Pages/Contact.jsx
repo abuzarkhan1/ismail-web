@@ -19,7 +19,6 @@ const ContactSection = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const title = 'CONNECT WITH ME';
   
-  // Typing effect for the title
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
@@ -43,7 +42,6 @@ const ContactSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Loading progress effect
   useEffect(() => {
     const interval = setInterval(() => {
       setLoadingProgress(prev => prev < 100 ? prev + 1 : prev);

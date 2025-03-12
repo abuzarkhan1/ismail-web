@@ -80,7 +80,6 @@ const GameDetails = ({ game, onClose }) => (
         exit={{ y: 50 }}
         className="max-w-7xl mx-auto"
       >
-        {/* Back button */}
         <button
           onClick={onClose}
           className="flex items-center gap-2 text-blue-400 font-mono mb-8 hover:text-blue-300 transition-colors"
@@ -120,73 +119,18 @@ const GameDetails = ({ game, onClose }) => (
                   allowFullScreen
                 />
               </div>
-
-              {/* Features */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-mono text-blue-400">KEY FEATURES</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            </div>
+            {/* Features moved to the right sidebar */}
+            <div className="space-y-6">
+              <div className="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+                <h2 className="text-2xl font-mono text-blue-400 mb-6">KEY FEATURES</h2>
+                <div className="space-y-4">
                   {game.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3 bg-blue-900/20 p-4 rounded-lg">
+                    <div key={index} className="flex items-start gap-3 bg-blue-900/10 p-4 rounded-lg hover:bg-blue-900/20 transition-colors">
                       <Target className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
                       <p className="text-blue-100/80 font-mono text-sm">{feature}</p>
                     </div>
                   ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Stats sidebar */}
-            <div className="space-y-6">
-              <div className="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
-                <h3 className="text-blue-400 font-mono text-xl mb-6">GAME STATS</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Users className="w-4 h-4" />
-                      <span className="font-mono text-sm">Players</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.players}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-mono text-sm">Playtime</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.playtime}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Calendar className="w-4 h-4" />
-                      <span className="font-mono text-sm">Release Date</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.releaseDate}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Cpu className="w-4 h-4" />
-                      <span className="font-mono text-sm">Platforms</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.platforms}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Rating card */}
-              <div className="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-blue-400 font-mono">RATING</h3>
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i}
-                        className={`w-5 h-5 ${i < game.rating ? 'text-blue-400' : 'text-blue-900'}`}
-                        fill={i < game.rating ? 'currentColor' : 'none'}
-                      />
-                    ))}
-                  </div>
-                </div>
-                <div className="text-4xl font-bold text-blue-400 font-mono">
-                  {game.rating}.0
                 </div>
               </div>
             </div>
@@ -219,7 +163,7 @@ const PortfolioSection = () => {
       playtime: "40+ Hours",
       releaseDate: "2024",
       rating: 5,
-      youtubeId: "V5bG9jT2bfc",
+      youtubeId: "r9DAqXGiN1k",
       features: [
         "Deep character customization with over 100 cybernetic augmentations",
         "Real-time combat system with dynamic environment interaction",
