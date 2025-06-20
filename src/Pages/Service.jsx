@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Gamepad, 
+import {
+  Gamepad,
   Trophy,
   Star,
   Users,
@@ -80,7 +80,6 @@ const GameDetails = ({ game, onClose }) => (
         exit={{ y: 50 }}
         className="max-w-7xl mx-auto"
       >
-        {/* Back button */}
         <button
           onClick={onClose}
           className="flex items-center gap-2 text-blue-400 font-mono mb-8 hover:text-blue-300 transition-colors"
@@ -102,15 +101,16 @@ const GameDetails = ({ game, onClose }) => (
           </div>
 
           {/* Game info */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-8">
-              <div>
-                <h1 className="text-4xl font-mono text-blue-400 mb-4">{game.title}</h1>
-                <p className="text-blue-100/80 font-mono leading-relaxed">{game.description}</p>
-              </div>
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-4xl font-mono text-blue-400 mb-4">{game.title}</h1>
+              <p className="text-blue-100/80 font-mono leading-relaxed max-w-4xl">{game.description}</p>
+            </div>
 
-              {/* YouTube embed */}
-              {game.youtubeId && (
+            {/* Video and Features Side by Side */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+              {/* YouTube embed - Takes 2/3 of the width on xl screens */}
+              <div className="xl:col-span-2">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-blue-900/20">
                   <iframe
                     src={`https://www.youtube.com/embed/${game.youtubeId}`}
@@ -121,74 +121,26 @@ const GameDetails = ({ game, onClose }) => (
                     allowFullScreen
                   />
                 </div>
-              )}
-
-              {/* Features */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-mono text-blue-400">KEY FEATURES</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {game.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3 bg-blue-900/20 p-4 rounded-lg">
-                      <Target className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
-                      <p className="text-blue-100/80 font-mono text-sm">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Stats sidebar */}
-            <div className="space-y-6">
-              <div className="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
-                <h3 className="text-blue-400 font-mono text-xl mb-6">GAME STATS</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Users className="w-4 h-4" />
-                      <span className="font-mono text-sm">Players</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.players}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-mono text-sm">Playtime</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.playtime}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Calendar className="w-4 h-4" />
-                      <span className="font-mono text-sm">Release Date</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.releaseDate}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-blue-300/70">
-                      <Cpu className="w-4 h-4" />
-                      <span className="font-mono text-sm">Platforms</span>
-                    </div>
-                    <span className="text-blue-400 font-mono">{game.platforms}</span>
-                  </div>
-                </div>
               </div>
 
-              {/* Rating card */}
-              <div className="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-blue-400 font-mono">RATING</h3>
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i}
-                        className={`w-5 h-5 ${i < game.rating ? 'text-blue-400' : 'text-blue-900'}`}
-                        fill={i < game.rating ? 'currentColor' : 'none'}
-                      />
+              {/* Features - Takes 1/3 of the width on xl screens */}
+              <div className="xl:col-span-1">
+                <div className="space-y-4 h-full">
+                  <h2 className="text-2xl font-mono text-blue-400">KEY FEATURES</h2>
+                  <div className="space-y-3 h-full">
+                    {game.features.map((feature, index) => (
+                      <motion.div 
+                        key={index} 
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-start gap-3 bg-blue-900/10 p-4 rounded-lg hover:bg-blue-900/20 transition-colors border border-blue-500/20"
+                      >
+                        <Target className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
+                        <p className="text-blue-100/80 font-mono text-sm leading-relaxed">{feature}</p>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
-                <div className="text-4xl font-bold text-blue-400 font-mono">
-                  {game.rating}.0
                 </div>
               </div>
             </div>
@@ -202,7 +154,7 @@ const GameDetails = ({ game, onClose }) => (
 const PortfolioSection = () => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setLoadingProgress(prev => (prev < 100 ? prev + 1 : prev));
@@ -241,7 +193,7 @@ const PortfolioSection = () => {
       playtime: "10+ Hours",
       releaseDate: "2024",
       rating: 5,
-      youtubeId: "xT1aCuHPN70",
+      youtubeId: "V5bG9jT2bfc",
       features: [
         "Classic slicing mechanics with modern twist",
         "Three difficulty modes: Easy, Medium, Hard",
