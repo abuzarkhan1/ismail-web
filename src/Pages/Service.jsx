@@ -110,16 +110,18 @@ const GameDetails = ({ game, onClose }) => (
               </div>
 
               {/* YouTube embed */}
-              <div className="relative aspect-video rounded-xl overflow-hidden bg-blue-900/20">
-                <iframe
-                  src={`https://www.youtube.com/embed/${game.youtubeId}`}
-                  title={`${game.title} Gameplay`}
-                  className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              {game.youtubeId && (
+                <div className="relative aspect-video rounded-xl overflow-hidden bg-blue-900/20">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${game.youtubeId}`}
+                    title={`${game.title} Gameplay`}
+                    className="absolute inset-0 w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
 
               {/* Features */}
               <div className="space-y-4">
@@ -210,57 +212,103 @@ const PortfolioSection = () => {
 
   const games = [
     {
-      title: "CYBER NEXUS",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
-      description: "A groundbreaking cyberpunk action RPG that pushes the boundaries of character customization and combat mechanics. Dive into a neon-drenched world where every choice matters and your cybernetic augmentations define your gameplay style.",
-      genre: "Action RPG",
-      platforms: "PC / PS5",
-      players: "100K+",
-      playtime: "40+ Hours",
+      title: "TAP COUNTER",
+      image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "A fast-paced reaction-based game that challenges players to tap the screen as quickly as possible within a limited time. Each stage sets a specific number of taps that must be completed before the countdown ends.",
+      genre: "Action/Arcade",
+      platforms: "Mobile",
+      players: "15K+",
+      playtime: "Endless",
+      releaseDate: "2024",
+      rating: 4,
+      youtubeId: "SkErFzroQZQ",
+      features: [
+        "Fast-paced reaction-based gameplay mechanics",
+        "Progressive difficulty with increasing tap requirements",
+        "Time-based challenges that test speed and precision",
+        "Stage progression system with tighter timing constraints",
+        "Competitive scoring for all ages",
+        "Hand-eye coordination training experience"
+      ]
+    },
+    {
+      title: "NINJA CRATES",
+      image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "An action-packed slicing game inspired by the classic Fruit Ninja mechanic. Instead of fruits, crates are launched onto the screen, each carrying a unique score value. Players must slash the crates mid-air to earn points.",
+      genre: "Action/Casual",
+      platforms: "Mobile/PC",
+      players: "28K+",
+      playtime: "10+ Hours",
       releaseDate: "2024",
       rating: 5,
-      youtubeId: "V5bG9jT2bfc",
+      youtubeId: "xT1aCuHPN70",
       features: [
-        "Deep character customization with over 100 cybernetic augmentations",
-        "Real-time combat system with dynamic environment interaction",
-        "Branching narrative with multiple endings",
-        "Stunning ray-traced graphics and dynamic weather system"
+        "Classic slicing mechanics with modern twist",
+        "Three difficulty modes: Easy, Medium, Hard",
+        "Dynamic crate spawning with unique score values",
+        "Bomb avoidance system for strategic gameplay",
+        "Score-based progression and achievements",
+        "Precision timing and reflex testing challenges"
       ]
     },
     {
-      title: "QUANTUM DRIFT",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
-      description: "Experience racing like never before in this quantum mechanics-inspired racing game. Manipulate time and space as you drift through impossible tracks at breakneck speeds.",
-      genre: "Racing",
-      platforms: "PC / Xbox",
-      players: "50K+",
-      playtime: "25+ Hours",
+      title: "FLYING BALL",
+      image: "https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "A skill-based arcade game inspired by the mechanics of Flappy Bird. In this game, a ball starts suspended in the air and is affected by gravity — it will begin to fall unless the player continuously taps the screen.",
+      genre: "Arcade/Casual",
+      platforms: "Mobile",
+      players: "22K+",
+      playtime: "5+ Hours",
       releaseDate: "2023",
       rating: 4,
-      youtubeId: "V5bG9jT2bfc",
+      youtubeId: "zufgvvjJV8I?si",
       features: [
-        "Revolutionary quantum mechanics-based racing mechanics",
-        "30 unique tracks across multiple dimensions",
-        "Advanced vehicle customization system",
-        "Competitive multiplayer with rankings"
+        "Physics-based gravity mechanics",
+        "Continuous tap-to-fly control system",
+        "Progressive obstacle difficulty scaling",
+        "Precise timing and coordination requirements",
+        "Addictive score-chasing gameplay loop",
+        "Quick reflexes and reaction time testing"
       ]
     },
     {
-      title: "STELLAR SIEGE",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1736514529/2_ddne2r.jpg",
-      description: "Command massive fleets in epic space battles. Build your empire across the stars in this strategic masterpiece that combines resource management with tactical combat.",
-      genre: "Strategy",
-      platforms: "All",
-      players: "250K+",
-      playtime: "100+ Hours",
+      title: "META SENTO",
+      image: "https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "A virtual reality (VR) game project developed to deliver an immersive experience within a stylized digital environment. Key contribution focused on lighting design, crafted meticulously to meet specific aesthetic and performance requirements.",
+      genre: "VR/Adventure",
+      platforms: "VR Headsets",
+      players: "5K+",
+      playtime: "8+ Hours",
       releaseDate: "2023",
       rating: 5,
-      youtubeId: "V5bG9jT2bfc",
+      youtubeId: "GSOOB3-hYrA?si",
       features: [
-        "Vast galaxy with over 1000 explorable star systems",
-        "Deep strategic gameplay with real-time fleet battles",
-        "Advanced diplomacy system with AI factions",
-        "Extensive mod support and Steam Workshop integration"
+        "Immersive virtual reality environment design",
+        "Meticulously crafted lighting systems",
+        "Optimized performance for VR platforms",
+        "Stylized digital world aesthetics",
+        "Real-time rendering optimization",
+        "Professional lighting design implementation"
+      ]
+    },
+    {
+      title: "SUPER CAPSULE",
+      image: "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "My first game developed using Unity, designed as a small platformer project to explore and apply game physics. Players control a capsule character tasked with collecting coins to progress by jumping from platform to platform.",
+      genre: "Platformer",
+      platforms: "PC",
+      players: "8K+",
+      playtime: "3+ Hours",
+      releaseDate: "2022",
+      rating: 3,
+      youtubeId: "ipiupwN1PWQ?si",
+      features: [
+        "Classic platformer mechanics with Unity physics",
+        "Coin collection progression system",
+        "Enemy defeat mechanics via precision jumping",
+        "Platform-to-platform navigation challenges",
+        "Physics-based character movement",
+        "Foundational game development learning project"
       ]
     }
   ];
