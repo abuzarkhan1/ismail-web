@@ -73,7 +73,7 @@ const ContactSection = () => {
       icon: Instagram,
       title: "INSTAGRAM",
       value: "@yourusername",
-      link: "https://instagram.com/yourusername"
+      link: "https://instagram.com/syedis6"
     }
   ];
 
