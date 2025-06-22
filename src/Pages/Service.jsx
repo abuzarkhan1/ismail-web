@@ -193,7 +193,7 @@ const PortfolioSection = () => {
       playtime: "10+ Hours",
       releaseDate: "2024",
       rating: 5,
-      youtubeId: "V5bG9jT2bfc",
+      youtubeId: "xT1aCuHPN70?si",
       features: [
         "Classic slicing mechanics with modern twist",
         "Three difficulty modes: Easy, Medium, Hard",
