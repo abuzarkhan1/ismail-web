@@ -165,7 +165,7 @@ const PortfolioSection = () => {
   const games = [
     {
       title: "TAP COUNTER",
-      image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap1_ocrbyh.jpg",
       description: "A fast-paced reaction-based game that challenges players to tap the screen as quickly as possible within a limited time. Each stage sets a specific number of taps that must be completed before the countdown ends.",
       genre: "Action/Arcade",
       platforms: "Mobile",
@@ -185,7 +185,7 @@ const PortfolioSection = () => {
     },
     {
       title: "NINJA CRATES",
-      image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tp2_tmzj1j.jpg",
       description: "An action-packed slicing game inspired by the classic Fruit Ninja mechanic. Instead of fruits, crates are launched onto the screen, each carrying a unique score value. Players must slash the crates mid-air to earn points.",
       genre: "Action/Casual",
       platforms: "Mobile/PC",
@@ -205,7 +205,7 @@ const PortfolioSection = () => {
     },
     {
       title: "FLYING BALL",
-      image: "https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tp3_jgavsr.jpg",
       description: "A skill-based arcade game inspired by the mechanics of Flappy Bird. In this game, a ball starts suspended in the air and is affected by gravity — it will begin to fall unless the player continuously taps the screen.",
       genre: "Arcade/Casual",
       platforms: "Mobile",
@@ -225,7 +225,7 @@ const PortfolioSection = () => {
     },
     {
       title: "META SENTO",
-      image: "https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap4_fjldqr.jpg",
       description: "A virtual reality (VR) game project developed to deliver an immersive experience within a stylized digital environment. Key contribution focused on lighting design, crafted meticulously to meet specific aesthetic and performance requirements.",
       genre: "VR/Adventure",
       platforms: "VR Headsets",
@@ -245,7 +245,7 @@ const PortfolioSection = () => {
     },
     {
       title: "SUPER CAPSULE",
-      image: "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tap5_y35ybp.jpg",
       description: "My first game developed using Unity, designed as a small platformer project to explore and apply game physics. Players control a capsule character tasked with collecting coins to progress by jumping from platform to platform.",
       genre: "Platformer",
       platforms: "PC",
