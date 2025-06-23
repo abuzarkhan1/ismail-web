@@ -108,9 +108,9 @@ const HeroSection = ({ setActiveSection }) => {
           {/* Stats grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16">
             {[
-              { icon: Code, label: "PROJECTS", value: "100+" },
-              { icon: Star, label: "SATISFIED CLIENTS", value: "50+" },
-              { icon: Trophy, label: "AWARDS", value: "25+" },
+              { icon: Code, label: "PROJECTS", value: "15+" },
+              { icon: Star, label: "SATISFIED CLIENTS", value: "10+" },
+              { icon: Trophy, label: "AWARDS", value: "5+" },
               { icon: Target, label: "ACCURACY", value: "99%" }
             ].map((stat, index) => (
               <div 
