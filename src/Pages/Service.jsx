@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Gamepad,
   Trophy,
@@ -9,9 +9,9 @@ import {
   Clock,
   Target,
   Cpu,
-  ChevronLeft
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+  ChevronLeft,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const GameCard = ({ game, onClick }) => (
   <motion.div
@@ -24,17 +24,17 @@ const GameCard = ({ game, onClick }) => (
     onClick={() => onClick(game)}
   >
     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-indigo-900/30 group-hover:opacity-80 transition-opacity rounded-xl" />
-    
+
     <div className="relative overflow-hidden rounded-xl border border-blue-500/30 bg-[#0A0B0E]/80 backdrop-blur-sm">
       <div className="relative aspect-video overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0B0E]/90 z-10" />
-        <img 
-          src={game.image} 
+        <img
+          src={game.image}
           alt={game.title}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-          <h3 className="text-2xl font-mono text-blue-400 mb-2 group-hover:text-blue-300 transition-colors">
+          <h3 className="text-2xl line-clamp-1 font-mono text-blue-400 mb-2 group-hover:text-blue-300 transition-colors">
             {game.title}
           </h3>
           <p className="text-blue-100/70 font-mono text-sm line-clamp-2">
@@ -42,7 +42,7 @@ const GameCard = ({ game, onClick }) => (
           </p>
         </div>
       </div>
-      
+
       <div className="p-6 pt-0">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -51,10 +51,12 @@ const GameCard = ({ game, onClick }) => (
             </div>
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star 
+                <Star
                   key={i}
-                  className={`w-4 h-4 ${i < game.rating ? 'text-blue-400' : 'text-blue-900'}`}
-                  fill={i < game.rating ? 'currentColor' : 'none'}
+                  className={`w-4 h-4 ${
+                    i < game.rating ? "text-blue-400" : "text-blue-900"
+                  }`}
+                  fill={i < game.rating ? "currentColor" : "none"}
                 />
               ))}
             </div>
@@ -92,8 +94,8 @@ const GameDetails = ({ game, onClose }) => (
         <div className="space-y-8">
           {/* Header image */}
           <div className="relative aspect-[21/9] rounded-xl overflow-hidden">
-            <img 
-              src={game.image} 
+            <img
+              src={game.image}
               alt={game.title}
               className="w-full h-full object-cover"
             />
@@ -103,8 +105,12 @@ const GameDetails = ({ game, onClose }) => (
           {/* Game info */}
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl font-mono text-blue-400 mb-4">{game.title}</h1>
-              <p className="text-blue-100/80 font-mono leading-relaxed max-w-4xl">{game.description}</p>
+              <h1 className="text-4xl font-mono text-blue-400 mb-4">
+                {game.title}
+              </h1>
+              <p className="text-blue-100/80 font-mono leading-relaxed max-w-4xl">
+                {game.description}
+              </p>
             </div>
 
             {/* Video and Features Side by Side */}
@@ -126,18 +132,22 @@ const GameDetails = ({ game, onClose }) => (
               {/* Features - Takes 1/3 of the width on xl screens */}
               <div className="xl:col-span-1">
                 <div className="space-y-4 h-full">
-                  <h2 className="text-2xl font-mono text-blue-400">KEY FEATURES</h2>
+                  <h2 className="text-2xl font-mono text-blue-400">
+                    KEY FEATURES
+                  </h2>
                   <div className="space-y-3 h-full">
                     {game.features.map((feature, index) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                         className="flex items-start gap-3 bg-blue-900/10 p-4 rounded-lg hover:bg-blue-900/20 transition-colors border border-blue-500/20"
                       >
                         <Target className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
-                        <p className="text-blue-100/80 font-mono text-sm leading-relaxed">{feature}</p>
+                        <p className="text-blue-100/80 font-mono text-sm leading-relaxed">
+                          {feature}
+                        </p>
                       </motion.div>
                     ))}
                   </div>
@@ -157,16 +167,40 @@ const PortfolioSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLoadingProgress(prev => (prev < 100 ? prev + 1 : prev));
+      setLoadingProgress((prev) => (prev < 100 ? prev + 1 : prev));
     }, 50);
     return () => clearInterval(interval);
   }, []);
 
   const games = [
     {
+      title:
+        "Final Year Project - Task force 141: AN FPS shooter game with voice controlled AI squad mates",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1751219876/ismail_gfygxl.jpg",
+      description:
+        "In the evolving landscape of interactive entertainment, artificial intelligence (AI) is playing an increasingly important role in enhancing immersion and player experience. My final year project, Task Force 141, focuses on building an innovative first-person shooter (FPS) game that incorporates advanced voice-controlled AI squad mates capable of understanding natural language. This project is motivated by the growing demand for deeper human-AI interaction in games, where AI not only responds to player actions but also understands and reacts to voice commands in realtime.The integration of voice-controlled AI introduces new dimensions of challenge and complexity, allowing players to communicate with their squadmates naturally, as if interacting with human teammates",
+      genre: "Action/Shooter",
+      platforms: "PC",
+      players: "2+",
+      playtime: "Endless",
+      releaseDate: "2025",
+      rating: 4,
+      youtubeId: "2ZoJS3alzfk",
+      features: [
+        "Voice-controlled AI squad mates for natural language interaction",
+        "Real-time voice command recognition and execution",
+        "Immersive first-person shooter (FPS) gameplay",
+        "Advanced AI behavior that mimics human teammates",
+        "Natural voice communication for in-game coordination",
+      ],
+    },
+    {
       title: "TAP COUNTER",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap1_ocrbyh.jpg",
-      description: "A fast-paced reaction-based game that challenges players to tap the screen as quickly as possible within a limited time. Each stage sets a specific number of taps that must be completed before the countdown ends.",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap1_ocrbyh.jpg",
+      description:
+        "A fast-paced reaction-based game that challenges players to tap the screen as quickly as possible within a limited time. Each stage sets a specific number of taps that must be completed before the countdown ends.",
       genre: "Action/Arcade",
       platforms: "Mobile",
       players: "15K+",
@@ -180,13 +214,15 @@ const PortfolioSection = () => {
         "Time-based challenges that test speed and precision",
         "Stage progression system with tighter timing constraints",
         "Competitive scoring for all ages",
-        "Hand-eye coordination training experience"
-      ]
+        "Hand-eye coordination training experience",
+      ],
     },
     {
       title: "NINJA CRATES",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tp2_tmzj1j.jpg",
-      description: "An action-packed slicing game inspired by the classic Fruit Ninja mechanic. Instead of fruits, crates are launched onto the screen, each carrying a unique score value. Players must slash the crates mid-air to earn points.",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tp2_tmzj1j.jpg",
+      description:
+        "An action-packed slicing game inspired by the classic Fruit Ninja mechanic. Instead of fruits, crates are launched onto the screen, each carrying a unique score value. Players must slash the crates mid-air to earn points.",
       genre: "Action/Casual",
       platforms: "Mobile/PC",
       players: "28K+",
@@ -200,13 +236,15 @@ const PortfolioSection = () => {
         "Dynamic crate spawning with unique score values",
         "Bomb avoidance system for strategic gameplay",
         "Score-based progression and achievements",
-        "Precision timing and reflex testing challenges"
-      ]
+        "Precision timing and reflex testing challenges",
+      ],
     },
     {
       title: "FLYING BALL",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tp3_jgavsr.jpg",
-      description: "A skill-based arcade game inspired by the mechanics of Flappy Bird. In this game, a ball starts suspended in the air and is affected by gravity — it will begin to fall unless the player continuously taps the screen.",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tp3_jgavsr.jpg",
+      description:
+        "A skill-based arcade game inspired by the mechanics of Flappy Bird. In this game, a ball starts suspended in the air and is affected by gravity — it will begin to fall unless the player continuously taps the screen.",
       genre: "Arcade/Casual",
       platforms: "Mobile",
       players: "22K+",
@@ -220,13 +258,15 @@ const PortfolioSection = () => {
         "Progressive obstacle difficulty scaling",
         "Precise timing and coordination requirements",
         "Addictive score-chasing gameplay loop",
-        "Quick reflexes and reaction time testing"
-      ]
+        "Quick reflexes and reaction time testing",
+      ],
     },
     {
       title: "META SENTO",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap4_fjldqr.jpg",
-      description: "A virtual reality (VR) game project developed to deliver an immersive experience within a stylized digital environment. Key contribution focused on lighting design, crafted meticulously to meet specific aesthetic and performance requirements.",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap4_fjldqr.jpg",
+      description:
+        "A virtual reality (VR) game project developed to deliver an immersive experience within a stylized digital environment. Key contribution focused on lighting design, crafted meticulously to meet specific aesthetic and performance requirements.",
       genre: "VR/Adventure",
       platforms: "VR Headsets",
       players: "5K+",
@@ -240,13 +280,15 @@ const PortfolioSection = () => {
         "Optimized performance for VR platforms",
         "Stylized digital world aesthetics",
         "Real-time rendering optimization",
-        "Professional lighting design implementation"
-      ]
+        "Professional lighting design implementation",
+      ],
     },
     {
       title: "SUPER CAPSULE",
-      image: "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tap5_y35ybp.jpg",
-      description: "My first game developed using Unity, designed as a small platformer project to explore and apply game physics. Players control a capsule character tasked with collecting coins to progress by jumping from platform to platform.",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1750680762/tap5_y35ybp.jpg",
+      description:
+        "My first game developed using Unity, designed as a small platformer project to explore and apply game physics. Players control a capsule character tasked with collecting coins to progress by jumping from platform to platform.",
       genre: "Platformer",
       platforms: "PC",
       players: "8K+",
@@ -260,9 +302,9 @@ const PortfolioSection = () => {
         "Enemy defeat mechanics via precision jumping",
         "Platform-to-platform navigation challenges",
         "Physics-based character movement",
-        "Foundational game development learning project"
-      ]
-    }
+        "Foundational game development learning project",
+      ],
+    },
   ];
 
   return (
@@ -276,7 +318,7 @@ const PortfolioSection = () => {
 
       {/* Background gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-indigo-900/20" />
-      
+
       {/* Main content */}
       <div className="relative">
         {/* Header section */}
@@ -295,11 +337,7 @@ const PortfolioSection = () => {
         <div className="max-w-7xl mx-auto px-6 pb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {games.map((game, index) => (
-              <GameCard 
-                key={index} 
-                game={game} 
-                onClick={setSelectedGame}
-              />
+              <GameCard key={index} game={game} onClick={setSelectedGame} />
             ))}
           </div>
         </div>
@@ -308,9 +346,9 @@ const PortfolioSection = () => {
       {/* Game details modal */}
       <AnimatePresence>
         {selectedGame && (
-          <GameDetails 
-            game={selectedGame} 
-            onClose={() => setSelectedGame(null)} 
+          <GameDetails
+            game={selectedGame}
+            onClose={() => setSelectedGame(null)}
           />
         )}
       </AnimatePresence>
