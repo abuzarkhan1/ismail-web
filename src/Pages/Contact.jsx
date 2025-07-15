@@ -66,8 +66,8 @@ const ContactSection = () => {
     {
       icon: Linkedin,
       title: "LINKEDIN",
-      value: "@yourlinkedin",
-      link: "https://linkedin.com/in/yourprofile"
+      value: "Ismail Azam",
+      link: "https://www.linkedin.com/in/ismail-azam/"
     },
     {
       icon: Instagram,

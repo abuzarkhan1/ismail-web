@@ -196,6 +196,29 @@ const PortfolioSection = () => {
       ],
     },
     {
+      title: "Color Flip Dodge - A Minimalist Reflex-Based Mobile Game",
+      image:
+        "https://res.cloudinary.com/diwerulix/image/upload/v1752580394/game_dksnw6.jpg",
+      description:
+        "Color Flip Dodge is a minimalist, fast-paced mobile game I developed solo in Unity.The core mechanic revolves around a color-switching player that must avoid or match incoming obstacles by tapping and dragging. As gameplay progresses, difficulty dynamically increases, requiring quick reflexes and strategic timing",
+      genre: "Action/Reflix",
+      platforms: "Mobile",
+      players: "1",
+      playtime: "Endless",
+      releaseDate: "2025",
+      rating: 4,
+      youtubeId: "2ZoJS3alzfk",
+      features: [
+        "mooth touch-based drag movement optimized for mobile",
+        "Dynamic color-switch mechanic with real-time feedback",
+        "Randomized obstacle spawner with global difficulty scaling",
+        "Custom sound manager with background music and SFX",
+        "Polished UI with pause, resume, and game-over screens",
+        "Responsive trail effect to enhance player movement",
+        "Built and tested for Android (portrait layout 1080x1920)",
+      ],
+    },
+    {
       title: "TAP COUNTER",
       image:
         "https://res.cloudinary.com/diwerulix/image/upload/v1750680763/tap1_ocrbyh.jpg",

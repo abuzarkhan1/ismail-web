@@ -101,20 +101,12 @@ const AboutSection = () => {
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-4 bg-blue-950/50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-1">5+</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-1">1+</div>
                   <div className="text-sm text-blue-300/70 font-mono">YEARS EXP</div>
                 </div>
                 <div className="text-center p-4 bg-blue-950/50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-1">20+</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-1">10+</div>
                   <div className="text-sm text-blue-300/70 font-mono">GAMES</div>
-                </div>
-                <div className="text-center p-4 bg-blue-950/50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-1">1M+</div>
-                  <div className="text-sm text-blue-300/70 font-mono">PLAYERS</div>
-                </div>
-                <div className="text-center p-4 bg-blue-950/50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-1">15+</div>
-                  <div className="text-sm text-blue-300/70 font-mono">AWARDS</div>
                 </div>
               </div>
             </div>

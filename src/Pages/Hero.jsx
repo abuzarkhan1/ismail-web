@@ -1,27 +1,26 @@
-import { useEffect, useState, useRef } from 'react';
-import { 
-  Gamepad, 
+import { useEffect, useState, useRef } from "react";
+import {
+  Gamepad,
   Code,
   Target,
   Sparkles,
   Terminal,
   Trophy,
-  Star
-} from 'lucide-react';
+  Star,
+} from "lucide-react";
 
 const HeroSection = ({ setActiveSection }) => {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const fullName = 'ISMAIL AZAM';
-  
-  // Typing effect for the name
+  const fullName = "ISMAIL AZAM";
+
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       setDisplayText(fullName.substring(0, index));
       index++;
-      
+
       if (index > fullName.length) {
         index = 0;
       }
@@ -33,7 +32,7 @@ const HeroSection = ({ setActiveSection }) => {
   // Cursor blinking effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
 
     return () => clearInterval(interval);
@@ -42,7 +41,7 @@ const HeroSection = ({ setActiveSection }) => {
   // Loading progress effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setLoadingProgress(prev => prev < 100 ? prev + 1 : prev);
+      setLoadingProgress((prev) => (prev < 100 ? prev + 1 : prev));
     }, 30);
 
     return () => clearInterval(interval);
@@ -51,7 +50,7 @@ const HeroSection = ({ setActiveSection }) => {
   const handleNavigation = (section) => {
     setActiveSection(section);
     // Smooth scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -73,7 +72,7 @@ const HeroSection = ({ setActiveSection }) => {
           <div className="flex items-center gap-4">
             <Terminal className="w-5 h-5 text-blue-400" />
             <div className="h-1 w-48 bg-blue-900/30 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-blue-400/50 rounded-full transition-all duration-300"
                 style={{ width: `${loadingProgress}%` }}
               />
@@ -81,7 +80,9 @@ const HeroSection = ({ setActiveSection }) => {
           </div>
           <div className="flex items-center gap-2">
             <Trophy className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-400/70 font-mono text-sm">SYSTEM ACTIVE</span>
+            <span className="text-blue-400/70 font-mono text-sm">
+              SYSTEM ACTIVE
+            </span>
           </div>
         </div>
 
@@ -97,7 +98,13 @@ const HeroSection = ({ setActiveSection }) => {
           {/* Animated name */}
           <h1 className="text-7xl font-bold text-blue-400 font-mono tracking-tight">
             {displayText}
-            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>|</span>
+            <span
+              className={`${
+                showCursor ? "opacity-100" : "opacity-0"
+              } transition-opacity duration-100`}
+            >
+              |
+            </span>
           </h1>
 
           {/* Subtitle */}
@@ -106,25 +113,25 @@ const HeroSection = ({ setActiveSection }) => {
           </p>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 max-w-3xl mx-auto">
             {[
               { icon: Code, label: "PROJECTS", value: "15+" },
-              { icon: Star, label: "SATISFIED CLIENTS", value: "10+" },
               { icon: Trophy, label: "AWARDS", value: "5+" },
-              { icon: Target, label: "ACCURACY", value: "99%" }
+              { icon: Target, label: "ACCURACY", value: "99%" },
             ].map((stat, index) => (
-              <div 
-                key={index}
-                className="relative group"
-              >
+              <div key={index} className="relative group">
                 {/* Stat card background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1a1b2e] to-[#141428] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+
                 {/* Stat content */}
                 <div className="relative p-6 flex flex-col items-center gap-2">
                   <stat.icon className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-3xl font-bold text-white">{stat.value}</span>
-                  <span className="text-sm text-blue-400/70 font-mono">{stat.label}</span>
+                  <span className="text-3xl font-bold text-white">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-blue-400/70 font-mono">
+                    {stat.label}
+                  </span>
                 </div>
               </div>
             ))}
@@ -132,21 +139,20 @@ const HeroSection = ({ setActiveSection }) => {
 
           {/* CTA buttons */}
           <div className="flex justify-center gap-6 mt-12">
-            <button 
-              onClick={() => handleNavigation('services')}
+            <button
+              onClick={() => handleNavigation("services")}
               className="px-8 py-3 bg-blue-500/10 border border-blue-400/30 text-blue-400 font-mono rounded-lg hover:bg-blue-400/20 transition-colors duration-300"
             >
               VIEW PROJECTS
             </button>
-            <button 
-              onClick={() => handleNavigation('contact')}
+            <button
+              onClick={() => handleNavigation("contact")}
               className="px-8 py-3 bg-blue-400/10 border border-blue-400/30 text-blue-400 font-mono rounded-lg hover:bg-blue-400/20 transition-colors duration-300"
             >
               CONTACT ME
             </button>
           </div>
         </div>
-
       </div>
 
       {/* Animated background particles */}
@@ -158,7 +164,7 @@ const HeroSection = ({ setActiveSection }) => {
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animation: `float ${5 + Math.random() * 10}s linear infinite`
+              animation: `float ${5 + Math.random() * 10}s linear infinite`,
             }}
           />
         ))}
@@ -174,7 +180,10 @@ const HeroSection = ({ setActiveSection }) => {
             opacity: 1;
           }
           100% {
-            transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px);
+            transform: translate(
+              ${Math.random() * 200 - 100}px,
+              ${Math.random() * 200 - 100}px
+            );
             opacity: 0;
           }
         }
